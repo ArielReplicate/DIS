@@ -19,10 +19,10 @@ class Predictor(BasePredictor):
         self.net.to(device)
         self.net.eval()
 
+    @torch.inference_mode()
     def predict(
             self,
             input_image: Path = Input(description="Image to segment."),
-
     ) -> Path:
         cache_size = [1024,1024]
         image, orig_size = load_image(str(input_image), cache_size)
