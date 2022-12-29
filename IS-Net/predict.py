@@ -19,7 +19,7 @@ class Predictor(BasePredictor):
         self.net.to(device)
         self.net.eval()
 
-    @torch.no_grad()
+    @torch.inference_mode()
     def predict(
             self,
             input_image: Path = Input(description="Image to segment."),
